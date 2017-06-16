@@ -36,11 +36,23 @@ If your pin is exporting, it will break.
  control.setMode(mode);
  ```
 
- Like that.
+ Like as that.
 
  There have a args, it's call "mode", it's byte[] type, you can fill out "OUT" or "IN" at here.
 ***
-### 2.4. How to set value?
+### 2.4. How to get mode?
+```Java
+ control.getMode();
+```
+
+Like as that.
+
+It have a return object, it's byte[] type, you can use this construction method to let it convert to String:
+```Java
+String str = new String(bytes);
+```
+***
+### 2.5. How to set value?
 ```Java
  control.setValue(value);
  ```
@@ -52,7 +64,16 @@ If your pin is exporting, it will break.
 
  > Low is 0
 ***
-### 2.5. How to unexport?
+### 2.6 How to get value?
+```Java
+control.getValue();
+```
+
+Like as that.
+
+It will return a value, it's byte[] type, you also can use a construction method to let it convert to String.
+***
+### 2.7. How to unexport?
 ```Java
  control.unexport();
  ```
@@ -60,7 +81,7 @@ If your pin is exporting, it will break.
  It can unexport your pin.
  If your pin isn't exporting, it will break.
 ***
-### 2.6. How to check my pin's export state?
+### 2.8. How to check my pin's export state?
 ```Java
  control.isExport();
  ```
