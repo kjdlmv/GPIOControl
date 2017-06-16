@@ -31,7 +31,7 @@ public class GPIOControl {
      */
     public void export() throws IOException {
         if (!isExport()) {
-            FileUtil.append(GPIODefine.gpioExportFilePath, String.valueOf(pinNum));
+            FileUtil.append(GPIODefine.gpioExportFilePath, String.valueOf(pinNum).getBytes());
         }
     }
 
@@ -42,7 +42,7 @@ public class GPIOControl {
      */
     public void unExport() throws IOException {
         if (isExport()) {
-            FileUtil.append(GPIODefine.gpioUnExportFilePath, String.valueOf(pinNum));
+            FileUtil.append(GPIODefine.gpioUnExportFilePath, String.valueOf(pinNum).getBytes());
         }
     }
 
@@ -51,9 +51,9 @@ public class GPIOControl {
      * @return Mode, if isn't exporting, then return fase.
      * @throws IOException
      */
-    public String getMode() throws IOException {
+    public byte[] getMode() throws IOException {
         if (isExport()) {
-            return FileUtil.readLine(gpioDirectory + "/" + GPIODefine.gpioDirectionFileName);
+            return FileUtil.readBytes(gpioDirectory + "/" + GPIODefine.gpioDirectionFileName);
         }
         return null;
     }
@@ -63,7 +63,7 @@ public class GPIOControl {
      * @param mode It's your mode, such as OUT, IN.
      * @throws IOException I/O error.
      */
-    public void setMode(String mode) throws IOException {
+    public void setMode(byte[] mode) throws IOException {
         if (isExport()) {
             FileUtil.append(gpioDirectory + "/" + GPIODefine.gpioDirectionFileName, mode);
         }
@@ -74,9 +74,9 @@ public class GPIOControl {
      * @param value It's your value.
      * @throws IOException I/O error.
      */
-    public void setValue(int value) throws IOException {
+    public void setValue(byte[] value) throws IOException {
         if (isExport()) {
-            FileUtil.replace(gpioDirectory + "/" + GPIODefine.gpioValueFileName, String.valueOf(value));
+            FileUtil.replace(gpioDirectory + "/" + GPIODefine.gpioValueFileName, value);
         }
     }
 

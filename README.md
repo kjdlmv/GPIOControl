@@ -38,7 +38,7 @@ If your pin is exporting, it will break.
 
  Like that.
 
- There have a args, it's call "mode", it's String type, you can fill out "OUT" or "IN" at here.
+ There have a args, it's call "mode", it's byte[] type, you can fill out "OUT" or "IN" at here.
 ***
 ### 2.4. How to set value?
 ```Java
@@ -47,7 +47,7 @@ If your pin is exporting, it will break.
 
  Like as that.
 
- There also have a args, it's call "value", it's Int type, you can fill out a value, such as 1, 0.
+ There also have a args, it's call "value", it's byte[] type, you can fill out a value, such as 1, 0, but you must convert it to byte[](You can use String.getBytes() method).
  > High is 1
 
  > Low is 0
