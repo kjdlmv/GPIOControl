@@ -15,6 +15,21 @@ class FileUtil {
         writer.close();
     }
 
+    static String readLine(String file) throws IOException {
+        BufferedReader reader = getBufferedReader(file);
+        String str = reader.readLine();
+        reader.close();
+        return str;
+    }
+
+    static byte[] readBytes(String file) throws IOException {
+        FileInputStream inputStream = new FileInputStream(file);
+        byte[] bytes = new byte[inputStream.available()];
+        inputStream.read(bytes);
+        inputStream.close();
+        return bytes;
+    }
+
     static BufferedReader getBufferedReader(String file) throws FileNotFoundException {
         FileInputStream inputStream = new FileInputStream(file);
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);

@@ -47,6 +47,18 @@ public class GPIOControl {
     }
 
     /**
+     * Get mode.
+     * @return Mode, if isn't exporting, then return fase.
+     * @throws IOException
+     */
+    public String getMode() throws IOException {
+        if (isExport()) {
+            return FileUtil.readLine(gpioDirectory + "/" + GPIODefine.gpioDirectionFileName);
+        }
+        return null;
+    }
+
+    /**
      * Set mode.
      * @param mode It's your mode, such as OUT, IN.
      * @throws IOException I/O error.
@@ -66,6 +78,13 @@ public class GPIOControl {
         if (isExport()) {
             FileUtil.replace(gpioDirectory + "/" + GPIODefine.gpioValueFileName, String.valueOf(value));
         }
+    }
+
+    public byte[] getValue() throws IOException {
+        if (isExport()) {
+            return FileUtil.readBytes(gpioDirectory + "/" + GPIODefine.gpioValueFileName);
+        }
+        return null;
     }
 
     /**
