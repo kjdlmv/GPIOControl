@@ -80,6 +80,11 @@ public class GPIOControl {
         }
     }
 
+    /**
+     * Get value.
+     * @return Value, if isn't exporting, then return null.
+     * @throws IOException
+     */
     public byte[] getValue() throws IOException {
         if (isExport()) {
             return FileUtil.readBytes(gpioDirectory + "/" + GPIODefine.gpioValueFileName);
