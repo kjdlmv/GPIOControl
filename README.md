@@ -60,9 +60,9 @@ String str = new String(bytes);
  Like as that.
 
  There also have a args, it's call "value", it's byte[] type, you can fill out a value, such as 1, 0, but you must convert it to byte[](You can use String.getBytes() method).
- > High is 1
+ > High is 1(char)
 
- > Low is 0
+ > Low is 0(char)
 ***
 ### 2.6 How to get value?
 ```Java
@@ -75,7 +75,7 @@ It will return a value, it's byte[] type, you also can use a construction method
 ***
 ### 2.7. How to unexport?
 ```Java
- control.unexport();
+ control.unExport();
  ```
 
  It can unexport your pin.
