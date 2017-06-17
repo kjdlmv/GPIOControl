@@ -1,4 +1,8 @@
 # GPIOControl
+## Version is 0.1 Alpha now.
+
+***
+
 ## 1.What is GPIOControl?
 * It's a library, use Java language.
 
@@ -20,7 +24,7 @@ I will tell you some way to use it.
  
 You can construction a GPIOControl object like this.
 ***
-There have a args, it's call "gpioNum", it's Int type, please fill out your GPIO index at here.
+There have a args, it's call "gpioNum", it's Integer type, please fill out your GPIO index at here.
 ***
 ### 2.2. How to export my pin?
 ```Java
@@ -87,6 +91,13 @@ It will return a value, it's byte[] type, you also can use a construction method
  ```
 
  Like as it, this method will return a result, it's Boolean type, if it's export, will returning true, else, returning false.
+***
+### 2.9. How to change pin index in a Object?
+```Java
+ control.setPin(pinNum);
+```
+
+Like at it, this method have a args, it's call "pinNum", Int type.
 ***
 
 ## 3.Lisence

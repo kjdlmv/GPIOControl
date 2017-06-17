@@ -13,7 +13,7 @@ public class GPIOControl {
      * @param pinNum Your pin index.
      */
     public GPIOControl(int pinNum) {
-        initPin(pinNum);
+        setPin(pinNum);
     }
 
     /**
@@ -100,7 +100,11 @@ public class GPIOControl {
         return pinNum;
     }
 
-    private void initPin(int pinNum) {
+    /**
+     * Set pin index.
+     * @param pinNum Pin index.
+     */
+    public void setPin(int pinNum) {
         this.pinNum = pinNum;
         this.gpioDirectory = GPIODefine.gpioRootDirectory + "/gpio" + pinNum;
         this.gpioDirectoryFile = new File(gpioDirectory);
