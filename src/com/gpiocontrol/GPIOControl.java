@@ -7,6 +7,8 @@ public class GPIOControl {
     private int pinNum;
     private String gpioDirectory;
     private File gpioDirectoryFile;
+    private String gpioValuePath;
+    private String gpioDirectionPath;
 
     /**
      * GPIOControl's construction method.
@@ -53,7 +55,7 @@ public class GPIOControl {
      */
     public byte[] getMode() throws IOException {
         if (isExport()) {
-            return FileUtil.readBytes(gpioDirectory + "/" + GPIODefine.gpioDirectionFileName);
+            return FileUtil.readBytes(gpioDirectory);
         }
         return null;
     }
@@ -65,7 +67,7 @@ public class GPIOControl {
      */
     public void setMode(byte[] mode) throws IOException {
         if (isExport()) {
-            FileUtil.append(gpioDirectory + "/" + GPIODefine.gpioDirectionFileName, mode);
+            FileUtil.append(gpioDirectory, mode);
         }
     }
 
@@ -76,7 +78,7 @@ public class GPIOControl {
      */
     public void setValue(byte[] value) throws IOException {
         if (isExport()) {
-            FileUtil.replace(gpioDirectory + "/" + GPIODefine.gpioValueFileName, value);
+            FileUtil.replace(gpioValuePath, value);
         }
     }
 
@@ -87,7 +89,7 @@ public class GPIOControl {
      */
     public byte[] getValue() throws IOException {
         if (isExport()) {
-            return FileUtil.readBytes(gpioDirectory + "/" + GPIODefine.gpioValueFileName);
+            return FileUtil.readBytes(gpioValuePath);
         }
         return null;
     }
@@ -106,7 +108,9 @@ public class GPIOControl {
      */
     public void setPin(int pinNum) {
         this.pinNum = pinNum;
-        this.gpioDirectory = GPIODefine.gpioRootDirectory + "/gpio" + pinNum;
-        this.gpioDirectoryFile = new File(gpioDirectory);
+        gpioDirectory = GPIODefine.gpioRootDirectory + "/gpio" + pinNum;
+        gpioDirectoryFile = new File(gpioDirectory);
+        gpioValuePath = gpioDirectory + "/" + GPIODefine.gpioValueFileName;
+        gpioDirectionPath = gpioDirectory + "/" + GPIODefine.gpioDirectionFileName;
     }
 }
