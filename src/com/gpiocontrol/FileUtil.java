@@ -9,9 +9,9 @@ class FileUtil {
         outputStream.close();
     }
 
-    static void replace(String file, byte[] appendBytes) throws IOException {
+    static void replace(String file, byte[] replaceBytes) throws IOException {
         FileOutputStream outputStream = new FileOutputStream(file, false);
-        outputStream.write(appendBytes);
+        outputStream.write(replaceBytes);
         outputStream.close();
     }
 
